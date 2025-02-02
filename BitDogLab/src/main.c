@@ -15,11 +15,36 @@
 
 // ************************ MACROS ***************************
 
-volatile uint8_t cycle = 0;
+volatile uint8_t cycle = 1;
 
 // Função de repeating
-bool repeating_timer_callback() {
-    
+bool repeating_timer_callback(struct repeating_timer *t) {
+    switch (cycle) {
+        // sinal vermelho
+        case 1:
+            turn_led_off(LED_GREEN);
+            turn_led_on(LED_RED);
+            printf("Sinal Vermelho\n");
+            cycle++;
+            break;
+        // sinal amarelo
+        case 2:
+            turn_led_on(LED_RED);
+            turn_led_on(LED_GREEN);         
+            printf("Sinal Amarelo\n");
+            cycle++;
+            break;
+        // sinal verde
+        case 3:
+            turn_led_off(LED_RED);         
+            turn_led_on(LED_GREEN);
+            printf("Sinal Verde\n\n");
+            cycle = 1;
+            break;
+        default:
+            break;
+    }
+    return true;
 }
 
 
@@ -34,6 +59,11 @@ int main() {
     // habilita a entrada no modo BOOTSELL ao pressionar o botao
         // do Joystick da BitDogLab
     init_button_with_interrupt(JOYSTICK_BUTTON, GPIO_IRQ_EDGE_FALL, true);
+
+    // leds começam desligados
+    turn_led_off(LED_RED);
+    turn_led_off(LED_GREEN);
+
 
     // nosso temporizador de repetição
     struct repeating_timer timer;
