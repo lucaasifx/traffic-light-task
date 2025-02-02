@@ -71,8 +71,8 @@ int main() {
     add_repeating_timer_ms(3000, repeating_timer_callback, NULL, &timer);
     
     while(true) {
-        sleep_ms(1000);
         printf("1 segundo se passou\n");
+        sleep_ms(1000);
     }
     return 0;
 }
