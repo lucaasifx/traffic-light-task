@@ -27,6 +27,7 @@ bool repeating_timer_callback(struct repeating_timer *t) {
             turn_led_off(LED_YELLOW);
             turn_led_off(LED_GREEN);
             turn_led_on(LED_RED);
+            puts("\n");
             printf("Sinal Vermelho\n");
             cycle++;
             break;
@@ -43,7 +44,7 @@ bool repeating_timer_callback(struct repeating_timer *t) {
             turn_led_off(LED_RED);
             turn_led_off(LED_YELLOW);         
             turn_led_on(LED_GREEN);
-            printf("Sinal Verde\n\n");
+            printf("Sinal Verde\n");
             cycle = 1;
             break;
         default:
@@ -74,8 +75,8 @@ int main() {
     struct repeating_timer timer;
     add_repeating_timer_ms(3000, repeating_timer_callback, NULL, &timer);
     while(true) {
-        // para evitar que a CPU fique sobrecarregada
-        sleep_ms(100);
+        printf("1 segundo se passou\n");
+        sleep_ms(1000);
     }
     return 0;
 }
