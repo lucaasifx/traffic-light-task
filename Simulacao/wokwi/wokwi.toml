@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = '../build/traffic-light-task.hex'
+elf = '../build/traffic-light-task.elf'
