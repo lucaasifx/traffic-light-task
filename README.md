@@ -77,10 +77,3 @@ O projeto foi desenvolvido em C e possui suporte tanto para a simulação do cir
 
 ---
 
-## 📹 Demonstração em Vídeo
-📺 **Veja o projeto em ação**:
-
-🔗 [Vídeo de demonstração no hardware](https://www.youtube.com/)
-
----
-
